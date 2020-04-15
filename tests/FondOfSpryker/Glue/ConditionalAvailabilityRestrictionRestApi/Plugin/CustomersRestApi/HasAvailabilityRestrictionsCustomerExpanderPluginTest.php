@@ -56,8 +56,30 @@ class HasAvailabilityRestrictionsCustomerExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->hasAvailabilityRestrictionsCustomerExpanderPlugin = new HasAvailabilityRestrictionsCustomerExpanderPlugin();
-        $this->hasAvailabilityRestrictionsCustomerExpanderPlugin->setFactory($this->conditionalAvailabilityRestrictionRestApiFactoryMock);
+        $this->hasAvailabilityRestrictionsCustomerExpanderPlugin = new class (
+            $this->conditionalAvailabilityRestrictionRestApiFactoryMock
+        ) extends HasAvailabilityRestrictionsCustomerExpanderPlugin {
+            /**
+             * @var \FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\ConditionalAvailabilityRestrictionRestApiFactory
+             */
+            protected $conditionalAvailabilityRestrictionRestApiFactory;
+
+            /**
+             * @param \FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\ConditionalAvailabilityRestrictionRestApiFactory $conditionalAvailabilityRestrictionRestApiFactory
+             */
+            public function __construct(ConditionalAvailabilityRestrictionRestApiFactory $conditionalAvailabilityRestrictionRestApiFactory)
+            {
+                $this->conditionalAvailabilityRestrictionRestApiFactory = $conditionalAvailabilityRestrictionRestApiFactory;
+            }
+
+            /**
+             * @return \FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\ConditionalAvailabilityRestrictionRestApiFactory
+             */
+            public function getFactory(): ConditionalAvailabilityRestrictionRestApiFactory
+            {
+                return $this->conditionalAvailabilityRestrictionRestApiFactory;
+            }
+        };
     }
 
     /**
