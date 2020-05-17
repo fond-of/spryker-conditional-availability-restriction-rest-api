@@ -20,8 +20,6 @@ class ConditionalAvailabilityRestrictionRestApiFactory extends AbstractFactory
     }
 
     /**
-     * @throws
-     *
      * @return \FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\Dependency\Client\ConditionalAvailabilityRestrictionRestApiToConditionalAvailabilityRestrictionClientInterface
      */
     protected function getConditionalAvailabilityRestrictionClient(): ConditionalAvailabilityRestrictionRestApiToConditionalAvailabilityRestrictionClientInterface
