@@ -7,6 +7,7 @@ use FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\ConditionalAvai
 use FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\Processor\Expander\CustomerExpanderInterface;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
+use Spryker\Glue\Kernel\AbstractFactory;
 
 class HasAvailabilityRestrictionsCustomerExpanderPluginTest extends Unit
 {
@@ -73,9 +74,9 @@ class HasAvailabilityRestrictionsCustomerExpanderPluginTest extends Unit
             }
 
             /**
-             * @return \FondOfSpryker\Glue\ConditionalAvailabilityRestrictionRestApi\ConditionalAvailabilityRestrictionRestApiFactory
+             * @return \Spryker\Glue\Kernel\AbstractFactory
              */
-            public function getFactory(): ConditionalAvailabilityRestrictionRestApiFactory
+            protected function getFactory(): AbstractFactory
             {
                 return $this->conditionalAvailabilityRestrictionRestApiFactory;
             }
